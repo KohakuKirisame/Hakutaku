@@ -1,0 +1,94 @@
+html,body{
+	height: 100%;
+	width: 100%;
+}
+#mainContainer{
+	z-index: -999;
+	margin: 0 0 0 0;
+	height: 100%;
+	width: 100%;
+	/*background: url("/storage/img/background/84479094_p0.jpg") no-repeat center;
+	background-size: cover;
+	background-attachment: fixed;*/
+}
+
+.bg-0{
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+	z-index: -999;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+#bgCover{
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 64%;
+}
+
+#logo{
+	z-index: 1;
+	position: relative;
+	top: 24%;
+}
+
+#logoImg{
+	-webkit-filter: drop-shadow(0 0 15px #ffffff);
+	filter: drop-shadow(0 0 15px #ffffff);
+}
+
+#pullUp{
+	font-size: 2.5rem;
+	color: white;
+	-webkit-filter: drop-shadow(0 0 15px #ffffff);
+	filter: drop-shadow(0 0 15px #ffffff);
+	position: absolute;
+	bottom: 4%;
+	width: 100%;
+}
+
+#bg-1{
+	height: 320px;
+	z-index: -999;
+	background: url("/storage/img/background/82624074_p0.png") center/cover no-repeat fixed;
+}
+
+.bgCover-1{
+	z-index: -998;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 50%;
+	margin: 0 !important;
+}
+
+#bg-2{
+	height: 320px;
+	z-index: -999;
+	background: url("/storage/img/background/82488800_p0.png") center/cover no-repeat fixed;
+}
+
+@media only screen and (max-width: 1280px) {
+	#bg-3{
+		height: 320px;
+	}
+}
+@media only screen and (min-width: 1280px) {
+	#bg-3{
+		height: 480px;
+	}
+}
+#bg-3{
+	z-index: -999;
+	background: url("/storage/img/background/74903722_p0.png") center/cover no-repeat;
+}

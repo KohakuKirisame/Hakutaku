@@ -1,0 +1,22 @@
+.bg-img{
+	filter: blur(2px);
+	-webkit-filter: blur(2px);
+	max-height: 360px;
+	min-height: 320px;
+	object-fit: cover;
+	transition: all 0.8s ease-in-out;
+}
+
+.avatar{
+	height: 128px;
+	width: 128px;
+}
+.d-shadow{
+	-webkit-filter: drop-shadow(0 0 9px #000000);
+	filter: drop-shadow(0 0 9px #000000);
+}
+
+.Nb{
+	filter: blur(0px) !important;
+	-webkit-filter: blur(0px) !important;
+}

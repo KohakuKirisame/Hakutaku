@@ -1,0 +1,19 @@
+html{
+	min-height: 100%;
+}
+body{
+	height: 100%;
+	background: url("/storage/img/background/82624074_p0.png") no-repeat center/cover;
+}
+
+
+#bgCover{
+	z-index: -999;
+	position: fixed;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 64%;
+}

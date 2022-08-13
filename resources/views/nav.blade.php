@@ -20,8 +20,8 @@
 						问答
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarQA">
-						<li><a class="dropdown-item" href="#">提问</a></li>
-						<li><a class="dropdown-item" href="#">问题列表</a></li>
+						<li><a class="dropdown-item" href="/Question/New">提问</a></li>
+						<li><a class="dropdown-item" href="/Question">问题列表</a></li>
 						<li><hr class="dropdown-divider" /></li>
 						<li><a class="dropdown-item" href="#">我的问题</a></li>
 					</ul>

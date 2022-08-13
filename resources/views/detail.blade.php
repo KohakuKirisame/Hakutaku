@@ -13,7 +13,7 @@
 <body>
 @include("nav")
 <div class="container my-5">
-	<div class="card text-white mb-4" onmouseover="addNb();" onmouseout="delNb();">
+	<div class="card text-white mb-4 shadow-lg" onmouseover="addNb();" onmouseout="delNb();">
 		<img src="{{$mentor->image}}" class="card-img bg-img" id="bg-img" />
 		<div class="card-img-overlay">
 			<div class="row justify-content-center">

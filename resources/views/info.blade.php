@@ -91,6 +91,10 @@
 								<label for="grade" class="form-label">年级</label>
 								<input type="text" class="form-control" name="grade" id="grade" placeholder="Grade" value="{{$user->grade}}">
 							</div>
+							<div class="mb-3 col-12 col-md-9">
+								<label for="sign" class="form-label">个人签名</label>
+								<input type="text" class="form-control" name="sign" id="sign" placeholder="Grade" value="{{$user->sign}}">
+							</div>
 						</div>
 					</form>
 					<div class="px-2 my-4">

@@ -13,7 +13,7 @@
 @include("nav")
 <div class="container my-5">
 	@if($user->role<0)
-		<p class="text-secondary text-center">您的账户尚未激活，请联系管理员</p>
+		<p class="text-secondary text-center">您的账户尚未激活，请联系执行团长</p>
 	@elseif($user->role==0)
 		<p class="text-secondary text-center">您的账户已被封禁</p>
 	@endif

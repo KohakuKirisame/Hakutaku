@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'PRC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -186,6 +186,10 @@ return [
          * Package Service Providers...
          */
 	    Intervention\Image\ImageServiceProvider::class,
+	    LaravelChen\Editormd\EditorMdProvider::class,
+	    zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+	    Parsedown\Providers\ParsedownServiceProvider::class,
+	    risul\LaravelLikeComment\LikeCommentServiceProvider::class,
 
         /*
          * Application Service Providers...

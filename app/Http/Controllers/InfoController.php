@@ -87,7 +87,8 @@ class InfoController extends BaseController{
 			"school"=>["required"],
 			"sex"=>["nullable"],
 			"email"=>["nullable"],
-			"grade"=>["nullable"]
+			"grade"=>["nullable"],
+			"sign"=>["nullable"],
 
 		],[
 			"school.required"=>"学校不能为空",
@@ -99,6 +100,7 @@ class InfoController extends BaseController{
 		$user->sex=intval($data["sex"]);
 		$user->email=$data["email"];
 		$user->grade=$data["grade"];
+		$user->sign=$data["sign"];
 		$user->save();
 		$request->session()->regenerate();
 		return redirect("/User");

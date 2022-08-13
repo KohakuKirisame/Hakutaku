@@ -85,7 +85,7 @@ class UserController extends BaseController{
 		$user=new User();
 		$user->name=$data["name"];
 		$user->phone=$data["phone"];
-		$user->role=$data["role"];
+		$user->role=0-$data["role"];
 		$user->school=$data["school"];
 		$user->password=Hash::make($data["password"]);
 		$user->save();
@@ -102,6 +102,7 @@ class UserController extends BaseController{
 		$user=Auth::user();
 		$user->password=Hash::make($data["newPass"]);
 		$user->save();
+		return back();
 	}
 
 	public function logout(Request $request){

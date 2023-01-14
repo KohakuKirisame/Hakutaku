@@ -50,15 +50,15 @@
 			<h5 class="card-title mb-4"><span class="badge bg-primary mx-1">{{$subjects[$question->subject]["subject"]}}</span>{{$question->title}}</h5>
 			<p class="card-text mb-4">{{$question->content}}</p>
 			<p class="text-secondary text-end mb-2">提问时间：{{$question->created_at}}@if($question->updated_at!=$question->created_at)<br />最后编辑：{{$question->updated_at}}@endif</p>
-			@include("laravelLikeComment::like",['like_item_id'=>"question_".$question->id])
-			@if($question->user==$user->id)<a class="btn btn-primary my-4" href="/Question/{{$question->id}}/Edit">编辑问题</a>@endif
+			@if(\Illuminate\Support\Facades\Auth::check()) @include("laravelLikeComment::like",['like_item_id'=>"question_".$question->id])
+			@if($question->user==$user->id)<a class="btn btn-primary my-4" href="/Question/{{$question->id}}/Edit">编辑问题</a>@endif @endif
 		</div>
 		@if(\Illuminate\Support\Facades\Storage::exists("public/img/question/".$question->id.".jpg"))
 			<img src="{{\Illuminate\Support\Facades\Storage::url("public/img/question/".$question->id.".jpg")}}" class="rounded card-img-bottom imgView" style="max-height: 160px;object-fit: cover" />
 		@endif
 	</div>
-	<a class="btn btn-primary w-100 mb-4" href="/Question/{{$question->id}}/Answer/New">@if(\App\Models\Answer::where(["question"=>$question->id,"user"=>$user->id])->exists())我的回答@else写回答@endif</a>
-	@foreach($answers as $answer)
+	<a class="btn btn-primary w-100 mb-4" href="/Question/{{$question->id}}/Answer/New">@if(\Illuminate\Support\Facades\Auth::check()) @if(\App\Models\Answer::where(["question"=>$question->id,"user"=>$user->id])->exists())我的回答@endif @else写回答@endif</a>
+
 		<div class="card mb-4 shadow-lg">
 			<div class="card-body">
 				<p style="position: absolute;right: 16px;top: 12px;" class="text-secondary">回答ID:{{$answer->id}}</p>
@@ -86,14 +86,11 @@
 					@parsedown($answer->content)
 				</div>
 				<p class="text-secondary">回答于：{{$answer->created_at}}@if($answer->updated_at!=$answer->created_at)<br />最后编辑于：{{$answer->updated_at}}@endif</p>
-				@if($answer->user==$user->id)<a class="btn mb-4 btn-primary" href="/Question/{{$question->id}}/Answer/{{$answer->id}}/Edit">编辑</a> @endif
-				@include("laravelLikeComment::like",['like_item_id'=>"answer_".$answer->id])
+				@if(\Illuminate\Support\Facades\Auth::check()) @if($answer->user==$user->id)<a class="btn mb-4 btn-primary" href="/Question/{{$question->id}}/Answer/{{$answer->id}}/Edit">编辑</a> @endif
+				@include("laravelLikeComment::like",['like_item_id'=>"answer_".$answer->id]) @endif
 			</div>
 		</div>
-	@endforeach
-
-{{$answers->links()}}
-
+	<a class="btn btn-outline-primary w-100 mb-4" href="/Question/{{$question->id}}">全部回答</a>
 </div>
 
 @include("footer")

@@ -123,6 +123,8 @@ class QuestionController extends BaseController{
 				Storage::delete("public/img/question/".$question->id.".jpg");
 			}
 			Storage::put("public/img/question/".$question->id.".jpg",$img->encode("jpg"));
+			$question->update_at=date("Y-m-d H:i:s",time());
+			$question->save();
 		}
 		return redirect("/Question/".$question->id);
 	}
@@ -137,6 +139,9 @@ class QuestionController extends BaseController{
 					$subject=intval($request->input("subject"));
 					$questions=Question::whereRaw("`subject` = ".$subject." AND (`title` LIKE '%".$content."%' OR `content` LIKE '%".$content."%')")->orderBy("updated_at","desc")->paginate(20);
 				}
+			}elseif($request->input("type")=="user"){
+				$user=$request->user();
+				$questions=Question::where(["user"=>$user->id])->orderBy("updated_at","desc")->paginate(10);
 			}
 		}else{
 			$questions=Question::orderBy("updated_at","desc")->paginate(20);
@@ -163,6 +168,19 @@ class QuestionController extends BaseController{
 			$subjects[$sub->id]=["id"=>$sub->id,"subject"=>$sub->subject];
 		}
 		return view("question.list",["user"=>$user,"subjects"=>$subjects]);
+	}
+
+	function myQuestion(Request $request){
+		$user=$request->user();
+		if($user->role<=0){
+			return redirect("/Dashboard");
+		}
+		$subs=Subject::all();
+		$subjects=[];
+		foreach($subs as $sub){
+			$subjects[$sub->id]=["id"=>$sub->id,"subject"=>$sub->subject];
+		}
+		return view("question.my",["user"=>$user,"subjects"=>$subjects]);
 	}
 
 }

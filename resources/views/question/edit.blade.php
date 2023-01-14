@@ -14,7 +14,7 @@
 <div class="container my-5">
 <div class="card shadow-lg px-4">
 	<h4 class="my-4 text-center">@if($edit)编辑@else新@endif问题</h4>
-	<form action="/Action/EditQuestion" method="post" id="questionForm">
+	<form action="/Action/EditQuestion" method="post" id="questionForm" enctype="multipart/form-data">
 		@csrf
 		@if($edit)
 			<input name="qid" value="{{$question->id}}" type="hidden" />

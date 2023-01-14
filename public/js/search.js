@@ -20,3 +20,13 @@ function searchBySS(){
 		$("#questionsCards").html(data);
 	});
 }
+
+function searchByUser(){
+	var csrf=$('meta[name="csrf-token"]').attr('content');
+	$.post("/Action/SearchQuestion",{
+		_token:csrf,
+		type:'user',
+	},function (data,status) {
+		$("#questionsCards").html(data);
+	});
+}

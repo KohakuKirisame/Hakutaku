@@ -7,7 +7,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item">
-					<a class="nav-link" href="#">Dashboard</a>
+					<a class="nav-link" href="/Dashboard">Dashboard</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="/Helpers">答疑官</a>
@@ -23,7 +23,7 @@
 						<li><a class="dropdown-item" href="/Question/New">提问</a></li>
 						<li><a class="dropdown-item" href="/Question">问题列表</a></li>
 						<li><hr class="dropdown-divider" /></li>
-						<li><a class="dropdown-item" href="#">我的问题</a></li>
+						<li><a class="dropdown-item" href="/Question/My">我的提问</a></li>
 					</ul>
 				</li>
 				<li class="nav-item">
@@ -44,7 +44,7 @@
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="user">
 							<li><a class="dropdown-item" href="/User">个人资料</a></li>
-							<li><a class="dropdown-item" href="#">我的问题</a></li>
+							<li><a class="dropdown-item" href="/Question/My">我的提问</a></li>
 							<li><hr class="dropdown-divider" /></li>
 							<li><a class="dropdown-item" href="/Action/Logout">退出</a></li>
 						</ul>

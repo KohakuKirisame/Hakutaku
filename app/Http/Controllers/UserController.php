@@ -53,11 +53,16 @@ class UserController extends BaseController{
 		$credentials=$request->validate([
 			"phone"=>['required'],
 			"password"=>['required'],
+		],[
+			"phone.required"=>"姓名不能为空",
+			"password.required"=>"请输入密码"
 		]);
 
 		if(Auth::attempt($credentials,filter_var($request->input("remember"), FILTER_VALIDATE_BOOLEAN))){
 			$request->session()->regenerate();
-			echo("Success");
+			return redirect()->intended();
+		}else{
+			return back()->withErrors(["password"=>"密码不匹配"]);
 		}
 	}
 

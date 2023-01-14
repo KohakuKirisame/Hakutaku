@@ -27,7 +27,7 @@ return [
      *
      * @see https://github.com/erusev/parsedown#security
      */
-    'safe_mode' => true,
+    'safe_mode' => false,
 
     /**
      * Tells **Parsedown** if it should automatically convert urls into anchor tags.

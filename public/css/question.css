@@ -1,3 +1,7 @@
 .question-card:hover{
 	box-shadow: none !important;
 }
+
+.question-card{
+	transition: all 0.25s ease-in-out;
+}

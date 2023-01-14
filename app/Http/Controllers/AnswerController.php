@@ -7,6 +7,7 @@ use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
 
 class AnswerController extends BaseController{
 
@@ -61,6 +62,45 @@ class AnswerController extends BaseController{
 		}
 
 		return redirect("/Question/".$qid);
+	}
+
+	public function showAnswer(Request $request, $qid, $aid){
+		$qid=intval($qid);
+		$aid=intval($aid);
+		$user=$request->user();
+		if(Auth::check()){
+			if($user->role<=0){
+				return redirect("/Dashboard");
+			}
+		}
+
+		if(!Question::where(["id"=>$qid])->exists()){
+			return redirect("/");
+		}
+		$question=Question::where(["id"=>$qid])->first();
+		$subs=Subject::all();
+		$subjects=[];
+		foreach($subs as $sub){
+			$subjects[$sub->id]=["id"=>$sub->id,"subject"=>$sub->subject];
+		}
+		$questioner=User::where(["id"=>$question->user])->first();
+		$questioner->avatar=UserController::getAvatar($questioner->id);
+		if($questioner->sign==""){
+			$questioner->sign=$questioner->school;
+		}
+		$answer=Answer::where(["id"=>$aid])->first();
+		if($answer->question!=$qid){
+			return redirect("/Question");
+		}
+		$a=User::where(["id"=>$answer->user])->first();
+		$answer->avatar=UserController::getAvatar($a->id);
+		$answer->name=$a->name;
+		$answer->sign=$a->sign;
+		$answer->role=$a->role;
+		if($answer->sign==""){
+			$answer->sign=$a->school;
+		}
+		return view("answer.single",["user"=>$user,"question"=>$question,"subjects"=>$subjects,"questioner"=>$questioner,"answer"=>$answer]);
 	}
 
 }

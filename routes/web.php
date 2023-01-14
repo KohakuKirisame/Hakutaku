@@ -31,9 +31,11 @@ Route::get("Mentor/{id}",[MentorController::class,"detailPage"])->middleware("au
 
 Route::prefix("Question")->group(function (){
 	Route::get("/{qid}",[QuestionController::class,"questionPage"])->middleware("auth")->where(["qid"=>"[0-9]+"]);
-	Route::get("/{qid}/Answer/{aid}/Edit",[AnswerController::class,"answerEdit"])->middleware("auth");
+	Route::get("/{qid}/Answer/{aid}",[AnswerController::class,"showAnswer"])->where(["qid"=>"[0-9]+","aid"=>"[0-9]+"]);;
+	Route::get("/{qid}/Answer/{aid}/Edit",[AnswerController::class,"answerEdit"])->middleware("auth")->where(["qid"=>"[0-9]+","aid"=>"[0-9]+"]);
 	Route::get("/{qid}/Answer/New",[AnswerController::class,"answerWrite"])->middleware("auth");
 	Route::get("/New",[QuestionController::class,"newPage"])->middleware("auth");
+	Route::get("/My",[QuestionController::class,"myQuestion"])->middleware("auth");
 	Route::get("/{qid}/Edit",[QuestionController::class,"editPage"])->middleware("auth");
 	Route::get("",[QuestionController::class,"listQuestion"])->middleware("auth");
 });

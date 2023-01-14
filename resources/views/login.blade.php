@@ -9,7 +9,6 @@
 	<script type="application/javascript" src="/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css" />
 	<link rel="stylesheet" href="/css/login.css" />
-	<script type="application/javascript" src="/js/login.js"></script>
 </head>
 <body>
 <div id="bgCover"></div>
@@ -19,7 +18,7 @@
 		<div class="card shadow-lg col-12 col-md-9 col-lg-6 opacity-75">
 			<div class="card-body">
 				<h4 class="card-title my-4 text-center">登录</h4>
-				<form method="post" id="loginForm">
+				<form method="post" id="loginForm" action="/Action/Login">
 					@csrf
 					<div class="form-floating mb-3">
 						<input type="number" class="form-control" name="phone" id="phone" placeholder="Phone" onkeydown="sub(event);">
@@ -36,10 +35,10 @@
 				</form>
 				<div class="row justify-content-around px-2 mt-4">
 					<a href="/Register" class="btn btn-outline-success col-4">注册</a>
-					<button onclick="login();" class="btn btn-outline-primary col-4">登录</button>
+					<button onclick="$('#loginForm').submit();" class="btn btn-outline-primary col-4">登录</button>
 				</div>
 				<div class="px-2 my-4">
-					<p class="text-center text-danger" id="warning"></p>
+					@foreach($errors->all() as $error) <p class="text-center text-danger" id="warning">{{$error}}</p>@endforeach
 				</div>
 			</div>
 		</div>
